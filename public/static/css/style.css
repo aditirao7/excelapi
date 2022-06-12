@@ -1,0 +1,101 @@
+body {
+  font-family: "Poppins", sans-serif;
+  padding: 0px;
+  margin: 0px;
+  color: black;
+  background-color: #bb97c3;
+  max-width: 80%;
+}
+
+#container {
+  padding: 0px;
+  padding-top: 20px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 95vh;
+  width: 95vw;
+}
+
+input[type="file"]::file-selector-button {
+  border: none;
+  border-radius: 10px;
+  color: black;
+  background-color: #22929d;
+  padding: 5px 10px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.home--main {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+}
+
+.main--content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 25px;
+  align-items: center;
+}
+
+.about--main {
+  margin-left: 5vw;
+  width: 90vw;
+  background-color: #ffffff;
+  border-radius: 25px;
+  padding-left: 25px;
+  padding-right: 20px;
+}
+
+form input[type="submit"] {
+  border: 2px solid #6bbec6;
+  border-radius: 10px;
+  color: white;
+  background-color: #6bbec6;
+  padding: 3px 10px;
+  font-size: 15px;
+  margin-top: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 200ms ease-in-out;
+}
+
+form input[type="submit"]:hover {
+  border: 2px solid white;
+  background: transparent;
+  color: black;
+}
+
+footer {
+  display: flex;
+  font-size: 15px;
+  height: 5vh;
+  width: 100vw;
+  align-items: center;
+}
+
+.social {
+  margin: auto;
+  display: block;
+}
+
+.socials--item {
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.socials--item .fa {
+  font-size: 1.5rem;
+}
+
+.socials--item .fa:hover {
+  color: white;
+}

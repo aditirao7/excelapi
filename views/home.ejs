@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=12.0, minimum-scale=1, user-scalable=yes"
+    />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="/static/css/style.css"
+    />
+
+    <title>Fast Jobs API</title>
+  </head>
+  <body>
+    <div id="container">
+      <main class="home--main">
+        <div class="main--content">
+								<div class="main--img" align="center">
+				<img src="/static/img/pets.jpg" id="image" style="max-width: 300px"/>
+				</div>
+
+        <h2>Upload your Pets excel file</h2>
+					<form action="/api/pet/" enctype="multipart/form-data" method="post">
+      <input
+        type="file"
+        name="pets"
+        accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+      />
+      <input type="submit" value="Upload Excel" />
+    </form>
+	</main>
+
+      <footer>
+        <div class="social">
+          <a
+            href="https://github.com/aditirao7/excelapi"
+            target="_blank"
+            class="socials--item"
+          >
+            <i class="fa fa-github"></i>
+          </a>
+	  <a
+            href="https://linkedin.com/in/aditirao72"
+            target="_blank"
+            class="socials--item"
+          >
+            <i class="fa fa-linkedin"></i>
+          </a>
+          <a
+            href="mailto:aditirao725@gmail.com"
+            target="_blank"
+            class="socials--item"
+          >
+            <i class="fa fa-envelope"></i>
+          </a>
+        </div>
+      </footer>
+    </div>
+</body>
+
+</html>
