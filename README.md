@@ -1,7 +1,7 @@
 # Pets Excel API
 
 #### API that takes an excel file as input, parses it and stores the data in the database.
-#### Hosted at: [fastjobsapi.herokuapp.com](https://www.fastjobsapi.herokuapp.com)
+#### Hosted at: [www.fastjobsapi.herokuapp.com](https://fastjobsapi.herokuapp.com/)
 
 ## Tech Stack and libraries needed:
 1. npm
