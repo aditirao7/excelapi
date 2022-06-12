@@ -18,7 +18,7 @@
 2. Install Node JS and npm.
 3. Navigate to the git directory and run ```npm install```
 4. Then run ```npm run start```
-5. The app will now be up and running on localhost:3000.
+5. The app will now be up and running on localhost:8080.
 
 ## Interacting with the API using PostMan
 1. The excel file can be uploaded either directly through PostMan or through the form on the homepage:
