@@ -38,7 +38,7 @@ async function importExcelData2MongoDB(filePath) {
     });
     Pet.insertMany(excelData["Sheet1"]);
   } catch (err) {
-    console.log(error);
+    console.log(err);
   }
 }
 
