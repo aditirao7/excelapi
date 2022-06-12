@@ -7,6 +7,7 @@ var excelToJson = require("convert-excel-to-json");
 var fs = require("fs");
 var pass = "fastjobsdb"; //ideally will set it as an env variable
 
+// temporary storage for excel file
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "./public/uploads");
@@ -17,24 +18,31 @@ var storage = multer.diskStorage({
 });
 var uploads = multer({ storage: storage });
 
+// connecting database
 mongoose.connect(
   "mongodb+srv://aditi:fastjobsdb@pets.cyj7br3.mongodb.net/?retryWrites=true&w=majority"
 );
 
-function importExcelData2MongoDB(filePath) {
-  const excelData = excelToJson({
-    sourceFile: filePath,
-    header: { rows: 1 },
-    columnToKey: {
-      A: "name",
-      B: "type",
-      C: "breed",
-      D: "age",
-    },
-  });
-  Pet.insertMany(excelData["Sheet1"]);
+// function to insert excel data into mongodb
+async function importExcelData2MongoDB(filePath) {
+  try {
+    const excelData = await excelToJson({
+      sourceFile: filePath,
+      header: { rows: 1 },
+      columnToKey: {
+        A: "name",
+        B: "type",
+        C: "breed",
+        D: "age",
+      },
+    });
+    Pet.insertMany(excelData["Sheet1"]);
+  } catch (err) {
+    console.log(error);
+  }
 }
 
+// route triggered after uploading excel file
 router.post("/", uploads.single("pets"), (req, res) => {
   Pet.collection.drop();
   var path = __dirname + "/public/uploads/" + req.file.filename;
@@ -43,44 +51,45 @@ router.post("/", uploads.single("pets"), (req, res) => {
   res.send("Excel parsed and stored in database");
 });
 
-router.get("/", (req, res) => {
-  Pet.find({}, function (err, f) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(f);
-    }
-  });
+// route triggered to get all pets in database
+router.get("/", async (req, res) => {
+  try {
+    const pets = await Pet.find({});
+    res.send(pets);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
+// route for specific petId
 router
   .route("/:petId")
-  .get((req, res) => {
-    Pet.findById(req.params.petId, function (err, docs) {
-      if (err) {
-        console.log(err);
-      } else {
-        res.send(docs);
-      }
-    });
+  // route to obtain specific pet
+  .get(async (req, res) => {
+    try {
+      const pet = await Pet.findById(req.params.petId);
+      res.send(pet);
+    } catch (err) {
+      console.log(err);
+    }
   })
-  .patch((req, res) => {
-    Pet.findByIdAndUpdate(req.params.petId, req.body, function (err, docs) {
-      if (err) {
-        console.log(err);
-      } else {
-        res.send("Updated");
-      }
-    });
+  // route to update specific pet
+  .patch(async (req, res) => {
+    try {
+      const update = await Pet.findByIdAndUpdate(req.params.petId, req.body);
+      res.send("Updated");
+    } catch (err) {
+      console.log(err);
+    }
   })
-  .delete((req, res) => {
-    Pet.deleteOne({ _id: req.params.petId }, function (err, docs) {
-      if (err) {
-        console.log(err);
-      } else {
-        res.send("Deleted");
-      }
-    });
+  // route to delete specific pet
+  .delete(async (req, res) => {
+    try {
+      const del = await Pet.deleteOne({ _id: req.params.petId });
+      res.send("Deleted");
+    } catch (err) {
+      console.log(err);
+    }
   });
 
 module.exports = router;
