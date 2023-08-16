@@ -20,7 +20,7 @@ var uploads = multer({ storage: storage });
 
 // connecting database
 mongoose.connect(
-  "mongodb+srv://aditi:fastjobsdb@pets.cyj7br3.mongodb.net/?retryWrites=true&w=majority"
+  "mongodb+srv://aditi:fastjobsdb@sbs.9v4gvko.mongodb.net/?retryWrites=true&w=majority"
 );
 
 // function to insert excel data into mongodb
